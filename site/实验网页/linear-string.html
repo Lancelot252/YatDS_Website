@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>字符串教程与任务</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dff5f7'/%3E%3Cpath d='M18 20h28M18 32h22M18 44h28' stroke='%23187990' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css?v=80cb79e9d4">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html"><span class="brand-mark">YatDS</span><span class="brand-title">实验任务</span></a>
+      <div class="nav-links">
+        <a href="../index.html">课程首页</a>
+        <a href="index.html">实验总览</a>
+        <div class="nav-item has-submenu">
+          <a class="active" href="linear.html">线性结构</a>
+          <div class="submenu" aria-label="线性结构子页面">
+            <a href="linear-list.html">线性表</a>
+            <a href="linear-stack-queue.html">栈和队列</a>
+            <a href="linear-project.html">Project</a>
+            <a href="linear-string.html">字符串</a>
+          </div>
+        </div>
+        <div class="nav-item has-submenu">
+          <a href="tree.html">树结构</a>
+          <div class="submenu" aria-label="树结构子页面">
+            <a href="tree-forest.html">二叉树和森林的转换</a>
+            <a href="tree-huffman.html">哈夫曼树</a>
+          </div>
+        </div>
+        <a href="graph.html">图结构</a>
+        <a href="search.html">查找算法</a>
+        <a href="sort.html">排序算法</a>
+      </div>
+    </nav>
+  </header>
+  <main class="page-shell">
+<details class="toc-panel" open>
+      <summary>本页目录</summary>
+      <nav class="toc toc-chapters" aria-label="本页目录">
+  <a class="toc-root" href="#字符串-string"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c3-1 6-4 7-7l5-5-2-2-5 5c-3 1-6 4-7 7l2 2Z"/><path d="m14 4 6 6"/></svg></span><span>字符串 (String)</span></a>
+  <a class="toc-chapter" href="#baseline-任务-1-字符串的基本实现"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 1: 字符串的基本实现</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#字符串的基本操作"><span>1.1</span><strong>字符串的基本操作</strong></a>
+    <a class="toc-subitem" href="#字符串的实现"><span>1.2</span><strong>字符串的实现</strong></a>
+    <a class="toc-subitem" href="#任务内容"><span>1.3</span><strong>任务内容</strong></a>
+  </div>
+  <a class="toc-chapter" href="#baseline-任务-2-字符串的模式匹配"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 2: 字符串的模式匹配</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#1-朴素模式匹配算法"><span>2.1</span><strong>1. 朴素模式匹配算法</strong></a>
+    <a class="toc-subitem" href="#2-kmp-算法"><span>2.2</span><strong>2. KMP 算法</strong></a>
+    <a class="toc-subitem" href="#任务内容-2"><span>2.3</span><strong>任务内容</strong></a>
+  </div>
+  <a class="toc-chapter" href="#baseline-任务-3-双链-dna-目标蛋白编码片段检索"><span class="toc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4l-3 4 3 4v4H7v-4l3-4-3-4V4Z"/></svg></span><span class="toc-chapter-title">Baseline 任务 3: 双链 DNA 目标蛋白编码片段检索</span><span class="toc-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span></a>
+  <div class="toc-sublist">
+    <a class="toc-subitem" href="#项目简介"><span>3.1</span><strong>项目简介</strong></a>
+    <a class="toc-subitem" href="#项目要求"><span>3.2</span><strong>项目要求</strong></a>
+    <a class="toc-subitem" href="#输入输出格式-遗传密码表与测试样例"><span>3.3</span><strong>输入输出与样例</strong></a>
+    <a class="toc-subitem" href="#报告内容"><span>3.4</span><strong>报告内容</strong></a>
+    <a class="toc-subitem" href="#评分标准"><span>3.5</span><strong>评分标准</strong></a>
+  </div>
+</nav>
+    </details>
+    <article class="content">
+      <h1 id="字符串-string">字符串 (String)</h1>
+<blockquote><p><small>字符串就如同由字符穿成的一串珍珠。</small></p><p><small>在文海中寻找特征，就如同在这串珍珠中寻找特定的花纹。</small></p></blockquote>
+<p>所有依赖代码位于 <code>String\src</code> 目录下。</p>
+<h2 id="baseline-任务-1-字符串的基本实现">Baseline 任务 1: 字符串的基本实现</h2>
+<p>字符串（String）是由零个或多个字符组成的有限序列。</p>
+<p>我们可以将字符串类比为一段连续存放的文字，虽然在很多高级语言中它已经被封装成基本的数据类型或者对象，但从存储结构上看，字符串本质上是一个元素类型为字符的线性表。最常见的存储形式就是顺序存储（即字符数组）。</p>
+<p>如图所示，由于字符串中的字符在内存中是连续存取的，我们可以使用下标来快速访问对应的字符。</p>
+<figure><img src="assets/images/Linear/string_array.svg" alt="string_array"><figcaption>string_array</figcaption></figure>
+<h3 id="字符串的基本操作">字符串的基本操作</h3>
+<p>字符串的常用操作如表所示，具体的方法名需要根据所使用的编程语言来确定。在此，我们以常见的求长度、拼接、求子串等命名为例（即 C++ 中<code>&lt;string&gt;</code>库中对应方法）。</p>
+<table><thead><tr><th>方法</th><th>描述</th><th>时间复杂度</th></tr></thead><tbody><tr><td><code>length()</code></td><td>获取字符串长度</td><td>$O(1)$</td></tr><tr><td><code>append()</code></td><td>在字符串末尾拼接另一个字符串</td><td>$O(m)$</td></tr><tr><td><code>substr()</code></td><td>从指定位置截取指定长度的子串</td><td>$O(k)$</td></tr></tbody></table>
+<p>在 C++ 语言中，字符串的数据结构已经被封装在 <code>&lt;string&gt;</code> 库中，我们可以直接使用它来创建和操作字符串。以下是一个简单的示例：</p>
+<pre><code>/* 初始化字符串 */
+string str1 = &quot;Hello&quot;;
+string str2 = &quot; World&quot;;
+
+/* 字符串拼接 */
+string str3 = str1 + str2; // &quot;Hello World&quot;
+str1.append(&quot;!&quot;);          // &quot;Hello!&quot;
+
+/* 访问特定字符 */
+char c = str3[0]; // &#x27;H&#x27;
+
+/* 截取子串 */
+string sub = str3.substr(0, 5); // &quot;Hello&quot;
+
+/* 获取长度 */
+int len = str3.length();
+
+/* 字符串比较 */
+bool isEqual = (str1 == str3);</code></pre>
+<p><small>注：上述代码需要包含头文件 <code>#include &lt;string&gt;</code></small></p>
+<p>实际上<code>&lt;string&gt;</code>库中的字符串包含的功能远超过上述基本操作，大家可以参考 C++ 官方文档来了解更多细节：https://en.cppreference.com/w/cpp/string/basic_string 。</p>
+<h3 id="字符串的实现">字符串的实现</h3>
+<p>为了深入了解字符串的运行机制，我们可以尝试自己实现一个顺序存储的字符串类。</p>
+<h4 id="基于动态数组的字符串实现">基于动态数组的字符串实现</h4>
+<p>最直接的实现方式就是通过动态维护一个字符数组及其长度（以及容量以避免频繁扩容）。</p>
+<pre><code>/* 基于动态数组实现的字符串 */
+class MyString {
+  private:
+    char* data; // 字符数组指针
+    int len;    // 字符串长度
+
+  public:
+    MyString() {
+        data = new char[1];
+        data[0] = &#x27;\0&#x27;;
+        len = 0;
+    }
+
+    MyString(const char* str) {
+        len = 0;
+        while (str[len] != &#x27;\0&#x27;) len++;
+        data = new char[len + 1];
+        for (int i = 0; i &lt; len; i++) {
+            data[i] = str[i];
+        }
+        data[len] = &#x27;\0&#x27;;
+    }
+
+    ~MyString() {
+        delete[] data;
+    }
+
+    /* 获取字符串长度 */
+    int length() {
+        return len;
+    }
+
+    /* 截取子串 */
+    MyString substr(int pos, int n) {
+        if (pos &lt; 0 || pos &gt;= len)
+            throw out_of_range(&quot;越界&quot;);
+        int subLen = (pos + n &gt; len) ? (len - pos) : n;
+        char* temp = new char[subLen + 1];
+        for (int i = 0; i &lt; subLen; i++) {
+            temp[i] = data[pos + i];
+        }
+        temp[subLen] = &#x27;\0&#x27;;
+        MyString result(temp);
+        delete[] temp;
+        return result;
+    }
+};</code></pre>
+<h3 id="任务内容">任务内容</h3>
+<ul><li>完成顺序存储的字符串类的实现，要求可以通过给出的测试程序（你在这一部分不可以修改测试程序，需自己基于上述框架补充拼接、查找等基本方法）。</li><li>参考 C++ 标准库中的 <code>&lt;string&gt;</code> 实现，在你的字符串类上添加更多的功能，如查找特定子串、替换子串等（五个更多的功能即可），并比较你的字符串在频繁拼接时与 <code>&lt;string&gt;</code> 库的性能差异。</li><li>分析动态扩容策略对字符串连接（如连续拼接百万次）性能的影响。</li></ul>
+<p>你提交的材料中这部分内容需要包含：</p>
+<ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些功能的理解，不能仅仅是简单的结果描述）</li><li>你对性能差异的分析（注：分析需要能够体现你对数组扩容等机制的理解，不能仅仅是简单的结果描述）</li></ul><table><thead><tr><th>类别</th><th>提交要求</th></tr></thead><tbody><tr><td>测试样例</td><td>在 <code>inputs/</code> 中放置 <code>.txt</code> 输入样例，在 <code>outputs/</code> 中放置同名标准输出文件；例如 <code>inputs/case01.txt</code> 对应 <code>outputs/case01.txt</code>。</td></tr><tr><td>测试程序</td><td>提交名为 <code>test</code> 的测试程序，能够自动读取 <code>inputs/</code> 中的样例，并与 <code>outputs/</code> 中的标准输出进行比对。</td></tr><tr><td>实现代码</td><td>提交本题实现所需的 <code>.cpp</code> 源文件，代码结构清晰，并保留必要注释。</td></tr><tr><td>构建文件</td><td>提交 <code>Makefile</code>，支持一条命令完成编译；建议同时提供运行样例测试的目标。</td></tr></tbody></table>
+<details>
+  <summary>点击展开：Baseline 任务 1 输入输出格式与样例</summary>
+  <p><strong>注：</strong>以下测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。本任务包含字符串类与 <code>std::string</code>、不同扩容策略的性能差异比较要求，自行生成的测试样例或测试程序输出必须包含可量化的性能统计数据，例如数据规模、操作次数、运行时间（如 <code>time_ms</code>）等。</p>
+  <h4>输入格式</h4>
+  <table><thead><tr><th>行号</th><th>内容</th><th>说明</th></tr></thead><tbody><tr><td>第 1 行</td><td><code>s</code></td><td>初始字符串；默认不包含空白字符，空字符串输入 <code>EMPTY</code></td></tr><tr><td>第 2 行</td><td><code>m</code></td><td>操作次数</td></tr><tr><td>接下来 <code>m</code> 行</td><td><code>op args...</code></td><td>每行一个操作</td></tr></tbody></table>
+  <table><thead><tr><th>操作</th><th>含义</th></tr></thead><tbody><tr><td><code>PRINT</code></td><td>输出当前字符串</td></tr><tr><td><code>LENGTH</code></td><td>输出当前字符串长度</td></tr><tr><td><code>APPEND t</code></td><td>将字符串 <code>t</code> 拼接到当前字符串末尾</td></tr><tr><td><code>SUBSTR pos len</code></td><td>输出从下标 <code>pos</code> 开始、长度为 <code>len</code> 的子串</td></tr><tr><td><code>FIND t</code></td><td>输出子串 <code>t</code> 首次出现的下标；不存在输出 <code>-1</code></td></tr><tr><td><code>REPLACE old new</code></td><td>将首次出现的子串 <code>old</code> 替换为 <code>new</code></td></tr><tr><td><code>COMPARE t</code></td><td>相等输出 <code>0</code>，小于输出 <code>-1</code>，大于输出 <code>1</code></td></tr><tr><td><code>CLEAR</code></td><td>清空当前字符串</td></tr></tbody></table>
+  <h4>输出格式</h4>
+  <table><thead><tr><th>项目</th><th>规定</th></tr></thead><tbody><tr><td>产生输出的操作</td><td><code>PRINT</code>、<code>LENGTH</code>、<code>SUBSTR</code>、<code>FIND</code>、<code>COMPARE</code></td></tr><tr><td>越界访问</td><td><code>SUBSTR</code> 越界输出 <code>ERROR</code></td></tr><tr><td>空字符串</td><td>输出 <code>EMPTY</code></td></tr><tr><td>性能统计</td><td>本任务包含性能差异比较要求，必须在功能输出后追加 <code>PERF name n=&lt;数据规模&gt; ops=&lt;操作次数&gt; time_ms=&lt;运行时间&gt;</code></td></tr></tbody></table>
+  <p><strong>输入样例：</strong></p>
+  <pre><code>Hello
+9
+PRINT
+LENGTH
+APPEND World
+SUBSTR 5 5
+FIND World
+REPLACE World String
+COMPARE HelloString
+PRINT
+LENGTH</code></pre>
+  <p><strong>输出样例：</strong></p>
+  <pre><code>Hello
+5
+World
+5
+0
+HelloString
+11
+PERF my_string n=100000 ops=200000 time_ms=24.18
+PERF std_string n=100000 ops=200000 time_ms=13.76
+PERF my_string_reserve n=100000 ops=200000 time_ms=9.42</code></pre>
+</details>
+<h2 id="baseline-任务-2-字符串的模式匹配">Baseline 任务 2: 字符串的模式匹配</h2>
+<p>字符串在日常中的最核心操作就是<strong>模式匹配（Pattern Matching）</strong>：即在主串中寻找是否出现了给定的子串（模式串），并返回其位置。</p>
+<h3 id="1-朴素模式匹配算法">1. 朴素模式匹配算法</h3>
+<p>朴素算法使用双指针，逐个字符向后比对。如果发现不匹配，主串退回到上一次比对起点的下一个字符，模式串退回到开头。 如图所示，每次发现失配，都“笨拙”地仅仅向右移动一位重新开始。</p>
+<pre><code>/* 朴素模式匹配算法 */
+int naiveMatch(const string&amp; text, const string&amp; pattern) {
+    int n = text.length(), m = pattern.length();
+    for (int i = 0; i &lt;= n - m; i++) {
+        int j = 0;
+        while (j &lt; m &amp;&amp; text[i + j] == pattern[j]) {
+            j++;
+        }
+        if (j == m) return i; // 匹配成功，返回起点
+    }
+    return -1; // 匹配失败
+}</code></pre>
+<h3 id="2-kmp-算法">2. KMP 算法</h3>
+<p>KMP 算法（Knuth-Morris-Pratt Algorithm）消除了主串指针的回溯。它通过对模式串的分析，得到了一个 <code>next</code> 数组（或称为失败函数），指示在发生失配时，模式串可以向右滑动的最大安全距离，从而保证主串指针只需一直向前移动。</p>
+<p>这个视频可以帮助同学们直观理解：https://www.bilibili.com/video/BV1AY4y157yL</p>
+<p>KMP 算法的实现核心在于 <code>next</code> 数组的求解：</p>
+<pre><code>/* 求解 next 数组的简易实现 */
+vector&lt;int&gt; getNext(const string&amp; pattern) {
+    int m = pattern.length();
+    vector&lt;int&gt; next(m, 0);
+    int head = 0;
+    for (int tail = 1; tail &lt; m; tail++) {
+        while (head &gt; 0 &amp;&amp; pattern[head] != pattern[tail]) {
+            head = next[head - 1];
+        }
+        if (pattern[head] == pattern[tail]) {
+            head++;
+        }
+        next[tail] = head;
+    }
+    return next;
+}</code></pre>
+<h3 id="任务内容-2">任务内容</h3>
+<p>为了更好地理解模式匹配，本练习分为了三个递进的步骤，建议按顺序完成：</p>
+<ul><li><strong>Step 1. 分析与测试朴素算法</strong>：构造极端的测试用例文本（例如主串是由大量重复字符凑成，末尾才失配），在自行编写的测试程序中测试并记录朴素算法在最坏情况下的耗时和表现。</li><li><strong>Step 2. 基础 KMP 算法的实现</strong>：在 <code> match.cpp</code> 中实现完整的 KMP 模式匹配算法（可直接调用前置写好的 <code>getNext</code> 函数）。然后使用在 Step 1 中构造的极端用例，对比它与朴素算法在性能上的巨大差异。</li><li><strong>Step 3. nextval 数组深度优化</strong>：针对原始 <code>next</code> 数组在连续相同字符时依然会多余比较的缺陷，实现优化的 <code>nextval</code> 求解算法。自己设计测试样例结合 <code>nextval</code> 运行终极版的 KMP 匹配，观察其具体区别和常数级性能提升。</li></ul>
+<p>你提交的材料中这部分内容需要包含：</p>
+<ul><li>三个小任务分别的代码（注意：代码的文件结构和注释也是评分的一部分）</li><li>对你程序和结果的分析（注：分析需要能够体现你对这些模式匹配算法过程的理解，不能仅仅是简单的结果描述）</li><li>你对性能差异的分析（注：分析需要能够体现你对时间和空间复杂度的理解，不能仅仅是简单的结果描述）</li></ul><table><thead><tr><th>类别</th><th>提交要求</th></tr></thead><tbody><tr><td>测试样例</td><td>在 <code>inputs/</code> 中放置 <code>.txt</code> 输入样例，在 <code>outputs/</code> 中放置同名标准输出文件；例如 <code>inputs/case01.txt</code> 对应 <code>outputs/case01.txt</code>。</td></tr><tr><td>测试程序</td><td>提交名为 <code>test</code> 的测试程序，能够自动读取 <code>inputs/</code> 中的样例，并与 <code>outputs/</code> 中的标准输出进行比对。</td></tr><tr><td>实现代码</td><td>提交本题实现所需的 <code>.cpp</code> 源文件，代码结构清晰，并保留必要注释。</td></tr><tr><td>构建文件</td><td>提交 <code>Makefile</code>，支持一条命令完成编译；建议同时提供运行样例测试的目标。</td></tr></tbody></table>
+<details>
+  <summary>点击展开：Baseline 任务 2 输入输出格式与样例</summary>
+  <p><strong>注：</strong>以下测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。本任务包含朴素匹配、KMP 与 nextval 优化的性能差异比较要求，自行生成的测试样例或测试程序输出必须包含可量化的性能统计数据，例如数据规模、操作次数、运行时间（如 <code>time_ms</code>）等。</p>
+  <h4>输入格式</h4>
+  <table><thead><tr><th>行号</th><th>内容</th><th>说明</th></tr></thead><tbody><tr><td>第 1 行</td><td><code>text</code></td><td>主串</td></tr><tr><td>第 2 行</td><td><code>pattern</code></td><td>模式串</td></tr><tr><td>第 3 行</td><td><code>m</code></td><td>操作次数</td></tr><tr><td>接下来 <code>m</code> 行</td><td><code>op</code></td><td>每行一个操作</td></tr></tbody></table>
+  <table><thead><tr><th>操作</th><th>含义</th></tr></thead><tbody><tr><td><code>NEXT</code></td><td>输出模式串的 <code>next</code> 数组</td></tr><tr><td><code>NEXTVAL</code></td><td>输出模式串的 <code>nextval</code> 数组</td></tr><tr><td><code>NAIVE</code></td><td>使用朴素算法匹配并输出首次匹配下标；不存在输出 <code>-1</code></td></tr><tr><td><code>KMP</code></td><td>使用 KMP 算法匹配并输出首次匹配下标；不存在输出 <code>-1</code></td></tr><tr><td><code>KMP_NEXTVAL</code></td><td>使用 nextval 优化后的 KMP 匹配并输出首次匹配下标；不存在输出 <code>-1</code></td></tr><tr><td><code>ALL</code></td><td>依次输出 <code>NAIVE</code>、<code>KMP</code>、<code>KMP_NEXTVAL</code> 的匹配下标</td></tr></tbody></table>
+  <h4>输出格式</h4>
+  <table><thead><tr><th>项目</th><th>规定</th></tr></thead><tbody><tr><td>普通输出</td><td>每个操作按输入顺序产生一行输出</td></tr><tr><td>数组输出</td><td>使用单个空格分隔</td></tr><tr><td>匹配下标</td><td>从 <code>0</code> 开始，不存在输出 <code>-1</code></td></tr><tr><td>性能统计</td><td>本任务包含性能差异比较要求，必须在功能输出后追加 <code>PERF name n=&lt;主串长度&gt; m=&lt;模式串长度&gt; time_ms=&lt;运行时间&gt;</code></td></tr></tbody></table>
+  <p><strong>输入样例：</strong></p>
+  <pre><code>AAAAAAAAAAB
+AAAAB
+5
+NEXT
+NEXTVAL
+NAIVE
+KMP
+KMP_NEXTVAL</code></pre>
+  <p><strong>输出样例：</strong></p>
+  <pre><code>0 1 2 3 0
+0 0 0 0 0
+6
+6
+6
+PERF naive n=11 m=5 time_ms=0.018
+PERF kmp n=11 m=5 time_ms=0.006
+PERF kmp_nextval n=11 m=5 time_ms=0.005</code></pre>
+</details>
+<h2 id="baseline-任务-3-双链-dna-目标蛋白编码片段检索">Baseline 任务 3: 双链 DNA 目标蛋白编码片段检索</h2>
+<h3 id="项目简介">项目简介</h3>
+<p>接下来我们希望大家利用字符串相关知识，来实现一个经典的生物信息学算法计算模块——<strong>DNA 目标蛋白编码片段检索</strong>。</p>
+<p>在 DNA 中，遗传信息由四种碱基（A, T, C, G）组成。每连续三个碱基构成一个<strong>密码子</strong>并翻译为一个氨基酸或者终止符号，例如 <code>ATG -> M</code>、<code>GCT -> A</code>、<code>TAA -> *</code>。一条 DNA 序列不仅可以从第 1、2、3 个碱基开始读取，即存在<strong>三种阅读框</strong>，而且由于具有双链结构，它还包含一条<strong>反向互补序列</strong>，需要将序列反转并将 <code>A&lt;-&gt;T</code>、<code>C&lt;-&gt;G</code> 互换。</p>
+<p>例如，当前序列为：</p>
+<pre><code>S = AATGGCTTTAAGCCATCATGGCC
+P = MA</code></pre>
+<p>其正向链的第一种阅读框中包含 <code>ATGGCT</code> 和 <code>ATGGCC</code>，都能翻译为 <code>MA</code>。同时在其反向互补链中也能翻译出 <code>MA</code> 的片段。我们需要将这些匹配转换回原始 DNA 序列的区间坐标，并回答给定的区间范围内完整包含多少个能够编码目标蛋白质的 DNA 片段。</p>
+<p>本项目为了突出字符串数据结构的使用，大家将被提供一段 DNA 序列 <code>S</code>、目标蛋白质序列 <code>P</code> 以及查询次数 <code>q</code>。程序需要对正/反向双链的 6 种阅读框进行翻译，通过<strong>高效的字符串匹配算法（如 KMP）</strong>在这 6 条蛋白质序列中查找目标蛋白质，最后对于给定的多个区间查询 <code>[l, r]</code> 实现快速统计作答。</p>
+<h3 id="项目要求">项目要求</h3>
+<ol>
+  <li><strong>核心算法设计</strong>：鼓励并要求自主设计或实现高效的字符串匹配算法完成蛋白质序列匹配，<strong>不能</strong>直接调用语言自带的字符串查找函数。为了证明你使用了线性时间复杂度的高效算法（如 KMP 算法等），第一行要求额外计算并输出目标蛋白质序列 <code>P</code> 的匹配状态特征数组（例如 KMP 的前缀函数 <code>pi</code> 数组）。如果使用普通暴力算法又省略输出该特征数组，不仅将导致在此项被扣分，还极有可能在进阶的大型数据测试中超时。</li>
+  <li><strong>生信逻辑实现</strong>：必须考虑正向链和反向互补链（2 种），以及每条链的三种阅读框（共 6 种情况）。将找到的匹配位置（支持重叠）准确转换回原 DNA 序列的区间 <code>L</code> 和 <code>R</code>，并输出链方向（<code>+</code> 或 <code>-</code>）和阅读框编号（<code>1, 2, 3</code>）。</li>
+  <li><strong>高效查询处理</strong>：对于多次区间查询 <code>[l, r]</code>，由于查询次数可能非常大（<code>q &lt;= 2 * 10^5</code>），你不能每次重新扫描序列。必须设计预处理（如前缀和等）来快速统计所给区间内完整包含特定序列的块数。</li>
+  <li><strong>代码质量</strong>：编写清晰、可维护的代码，并添加适当的注释和文档。时间复杂度要求尽量达到 <code>O(n + m + q)</code>。</li>
+</ol>
+<details>
+  <summary id="输入输出格式-遗传密码表与测试样例">点击展开：Baseline 任务 3 输入输出格式与样例</summary>
+  <p><strong>注：</strong>以下测试样例仅用于说明输入输出格式，不代表完整测试覆盖范围，也不是唯一评测数据。学生需要根据该格式自行设计并生成更多测试样例，用于覆盖边界情况和自定义扩展功能。</p>
+  <h4 id="密码子翻译规则与匹配区间限制">密码子翻译规则与匹配区间限制</h4>
+  <p>本题使用标准遗传密码表，例如 <code>ATG -> M</code>、<code>GCC/GCT/GCA/GCG -> A</code>、<code>TAA/TAG/TGA -> *</code> 等。<code>*</code> 表示终止密码子。如果翻译序列中出现 <code>*</code>，它可以看作一个普通字符参与 KMP 扫描，但目标序列 <code>P</code> 不含 <code>*</code>。设 <code>P</code> 的长为 <code>m</code>，匹配长度均为 <code>3m</code>。区间坐标查询 <code>[l, r]</code> 只计算被<strong>完全包含</strong>的片段个数，即右端点不超过 <code>r</code>，左端点不小于 <code>l</code> 的连续序列。</p>
+  <h4 id="输入格式">输入格式</h4>
+  <table><thead><tr><th>行号</th><th>内容</th><th>说明</th></tr></thead><tbody><tr><td>第 1 行</td><td><code>S</code></td><td>DNA 序列</td></tr><tr><td>第 2 行</td><td><code>P</code></td><td>目标蛋白质序列</td></tr><tr><td>第 3 行</td><td><code>q</code></td><td>查询次数</td></tr><tr><td>接下来 <code>q</code> 行</td><td><code>l r</code></td><td>查询区间 <code>[l, r]</code></td></tr></tbody></table>
+  <h4 id="输出格式">输出格式</h4>
+  <table><thead><tr><th>位置</th><th>内容</th><th>说明</th></tr></thead><tbody><tr><td>第 1 行</td><td><code>pi</code> 数组</td><td>目标蛋白质序列 <code>P</code> 的匹配状态特征数组；普通暴力匹配需输出 <code>-1</code> 标明未实现特征数组</td></tr><tr><td>第 2 行</td><td><code>K</code></td><td>找到的总匹配数</td></tr><tr><td>接下来 <code>K</code> 行</td><td><code>L R strand frame</code></td><td>匹配片段区间、链方向和阅读框；按 <code>L</code> 从小到大排序，<code>L</code> 相同时按 <code>strand</code> 和 <code>frame</code> 排序</td></tr><tr><td>最后 <code>q</code> 行</td><td><code>answer</code></td><td>每个查询区间内完整包含的匹配数量</td></tr></tbody></table>
+  <h4 id="样例数据">样例数据</h4>
+  <p><strong>输入样例：</strong></p>
+  <pre><code>AATGGCTTTAAGCCATCATGGCC
+MA
+6
+1 7
+1 16
+10 16
+12 23
+1 23
+3 17</code></pre>
+  <p><strong>输出样例：</strong></p>
+  <pre><code>0 0
+3
+2 7 + 2
+11 16 - 2
+18 23 + 3
+1
+2
+1
+1
+3
+1</code></pre>
+</details>
+<h3 id="报告内容">报告内容</h3>
+<p>你的实验报告需要至少包含以下要点：</p>
+<ul>
+  <li>你的设计思路（采用的匹配算法原理及其特征状态捕捉、反向互补坐标如何映射、如何处理多次区间查询等）。</li>
+  <li>各个核心功能函数的代码原理解释。</li>
+  <li>运行说明与时间复杂度分析。</li>
+</ul>
+<h3 id="提交要求">提交要求</h3>
+<p>你提交的材料中这部分内容需要包含：</p>
+<table><thead><tr><th>类别</th><th>提交要求</th></tr></thead><tbody><tr><td>测试样例</td><td>在 <code>inputs/</code> 中放置 <code>.txt</code> 输入样例，在 <code>outputs/</code> 中放置同名标准输出文件；例如 <code>inputs/case01.txt</code> 对应 <code>outputs/case01.txt</code>。</td></tr><tr><td>测试程序</td><td>提交名为 <code>test</code> 的测试程序，能够自动读取 <code>inputs/</code> 中的样例，并与 <code>outputs/</code> 中的标准输出进行比对。</td></tr><tr><td>实现代码</td><td>提交本题实现所需的 <code>.cpp</code> 源文件，代码结构清晰，并保留必要注释。</td></tr><tr><td>构建文件</td><td>提交 <code>Makefile</code>，支持一条命令完成编译；建议同时提供运行样例测试的目标。</td></tr></tbody></table>
+<h3 id="评分标准">评分标准</h3>
+<ul>
+  <li><strong>基础匹配实现（30%）</strong>：自主实现了高效的字符串匹配算法（最推荐 KMP），并且完整梳理出 6 条可能阅读框的蛋白质翻译工作；能够按要求输出特征状态数组。如果是粗暴匹配（<code>O(nm)</code> 时间复杂度）或无法给出特征状态，该项只能获得部分分数并可能导致大型测试集不通过。你需要在实验报告中提供匹配算法的设计思路。</li>
+  <li><strong>坐标映射与查询优化（30%）</strong>：合理转化反向互补链及阅读框坐标，正确运用前缀和等时间优化技巧，使得多区间查询的时间复杂度符合预期。你需要在报告中阐明数据结构的优化原理。</li>
+  <li><strong>鲁棒性（20%）</strong>：代码能够正确应对包含交叉重叠匹配、区间无法容纳目标串等边缘用例，以及未越界的准确判断。</li>
+  <li><strong>代码质量（20%）</strong>：编写清晰、可维护的代码，并添加适当的注释和文档。</li>
+</ul>
+<p>注：以上评分标准同时基于你的报告和实际程序内容进行评估。</p>
+    </article>
+  </main>
+  <footer class="footer">内容来源于仓库 src 下的课程资料。Linear 页面完整转写自指定 README。</footer>
+  <script src="assets/slides.js?v=48b60691f7"></script>
+</body>
+</html>

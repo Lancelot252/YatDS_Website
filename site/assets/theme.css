@@ -1,0 +1,37 @@
+@font-face {
+  font-family: "Chakra Petch";
+  src: url("fonts/chakra-petch-yatds.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  unicode-range: U+0044, U+0053, U+0059, U+0061, U+0074;
+}
+
+:root {
+  color-scheme: light;
+  --yat-page: #f3f5ee;
+  --yat-paper: #fffefa;
+  --yat-ink: #1a2923;
+  --yat-muted: #4f6257;
+  --yat-line: #d9e2d7;
+  --yat-line-strong: #bdcfbf;
+  --yat-primary: #176346;
+  --yat-deep: #14392d;
+  --yat-wash: #e9f0e7;
+  --yat-wash-light: #f1f5ee;
+  --yat-on-dark: #fbfcf3;
+  --yat-on-dark-muted: #d4e6d7;
+  --yat-warm: #823c22;
+  --yat-warm-wash: #f7ebdf;
+  --yat-link-line: #81aa96;
+  --yat-sans: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+  --yat-serif: "Songti SC", "Noto Serif CJK SC", "SimSun", serif;
+  --yat-mono: "SFMono-Regular", Consolas, monospace;
+  --yat-wordmark: italic 700 27px/1 "Chakra Petch", var(--yat-sans);
+  --yat-wordmark-spacing: -.015em;
+  --yat-frame: 1120px;
+  --yat-header: 64px;
+  --yat-panel-radius: 9px;
+  --yat-banner-radius: 14px;
+  --yat-focus: 0 0 0 3px rgba(23, 99, 70, .24);
+}

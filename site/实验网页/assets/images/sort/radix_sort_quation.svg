@@ -1,0 +1,36 @@
+<svg viewBox="0 0 620 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="基数排序取位公式">
+  <defs>
+    <filter id="sh" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#187990" flood-opacity=".07"/>
+    </filter>
+  </defs>
+
+  <g font-family="'Cambria Math','STIX Two Math','Times New Roman',serif" fill="#1d2a2f" filter="url(#sh)">
+
+    <!-- x_k = -->
+    <text x="110" y="78" font-size="38" font-style="italic" font-weight="600">x</text>
+    <text x="138" y="92" font-size="24" font-style="italic" font-weight="600">k</text>
+    <text x="172" y="78" font-size="38" font-weight="600">=</text>
+
+    <!-- 左侧下取整符号 ⌊ -->
+    <text x="206" y="78" font-size="50" font-weight="500">&#x230A;</text>
+
+    <!-- 分数：分子 x，分母 d^(k-1) -->
+    <!-- 分数线 -->
+    <line x1="238" y1="62" x2="338" y2="62" stroke="#1d2a2f" stroke-width="2"/>
+
+    <!-- 分子 x -->
+    <text x="278" y="52" text-anchor="middle" font-size="34" font-style="italic" font-weight="600">x</text>
+
+    <!-- 分母 d^(k-1) -->
+    <text x="248" y="98" font-size="30" font-style="italic" font-weight="600">d</text>
+    <text x="268" y="86" font-size="20" font-style="italic" font-weight="600">k&#x2212;1</text>
+
+    <!-- 右侧下取整符号 ⌋ -->
+    <text x="350" y="78" font-size="50" font-weight="500">&#x230B;</text>
+
+    <!-- mod d -->
+    <text x="400" y="78" font-size="34" font-weight="600">mod</text>
+    <text x="470" y="78" font-size="34" font-style="italic" font-weight="600">d</text>
+  </g>
+</svg>

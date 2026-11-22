@@ -1,0 +1,23 @@
+[Unit]
+Description=YatDS authenticated static site deploy receiver
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=yatds-deploy
+Group=yatds-deploy
+WorkingDirectory=/srv/yatds
+Environment=HOME=/srv/yatds
+EnvironmentFile=/etc/yatds-deploy.env
+ExecStart=/usr/bin/python3 /usr/local/lib/yatds/deploy_receiver.py
+Restart=on-failure
+RestartSec=3
+UMask=0022
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/yatds
+
+[Install]
+WantedBy=multi-user.target
