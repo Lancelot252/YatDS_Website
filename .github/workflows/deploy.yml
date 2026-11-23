@@ -1,35 +1,45 @@
-name: Deploy YatDS
+name: Deploy site to GitHub Pages
 
-"on":
+on:
   push:
-    branches: [main]
+    branches:
+      - main
+    paths:
+      - "site/**"
+      - ".github/workflows/deploy.yml"
+
+  # 支持在 Actions 页面手动部署
   workflow_dispatch:
 
-permissions: {}
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
-  group: yatds-production
+  group: pages
   cancel-in-progress: false
 
 jobs:
   deploy:
-    if: github.ref == 'refs/heads/main' && vars.DEPLOY_URL != ''
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-    env:
-      DEPLOY_URL: ${{ vars.DEPLOY_URL }}
-      DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      - name: Request production deployment
-        shell: bash
-        run: |
-          set -euo pipefail
-          : "${DEPLOY_URL:?Set the DEPLOY_URL Actions variable}"
-          : "${DEPLOY_TOKEN:?Set the DEPLOY_TOKEN Actions secret}"
-          result=$(curl --fail-with-body --silent --show-error \
-            --proto '=https' --connect-timeout 10 --max-time 210 \
-            --request POST --header "Authorization: Bearer $DEPLOY_TOKEN" \
-            --write-out '\n%{http_code}' "$DEPLOY_URL")
-          status="${result##*$'\n'}"
-          [[ "$status" == 200 ]] || { echo "Unexpected HTTP status $status"; exit 1; }
-          printf '%s\n' "${result%$'\n'*}"
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload static website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
